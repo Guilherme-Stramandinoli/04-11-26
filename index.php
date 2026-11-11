@@ -31,10 +31,18 @@ if(isset($_GET['cep'])) {
              foreach($endereco as $data => $valor) {
                 if(strlen($valor) > 0){
                 echo "$data: $valor <br>";
+
                 }
              }
         ?>
     </ul>
-</div>
+    <form action="salvar.php" method="POST">
+        <input type="hidden" name="cep" value="<?php echo htmlspecialchars($_GET['cep'])?>">
+        <button>salvar</button>
+    </form>
 
+</div>
+<?php elseif(isset($endereco['erro'])):?>
+    <h2>CEP encontrado</h2>
+    <p>O cep ditado pelo usuario não existe</p>
 <?php endif;?>
